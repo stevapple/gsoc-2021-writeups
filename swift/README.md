@@ -8,7 +8,7 @@ The Swift ([apple/swift](https://github.com/apple/swift)) repository consist of 
 
 In the pitch, I added two new flags to the driver: `-ignore-package-declarations` and `-print-package-declarations`. These two flags will allow the `@package` syntax in the input file.
 
-`-ignore-package-declarations` will simply ignore such syntax, and it is useful for compiling such scripts without modify them.
+`-ignore-package-declarations` will simply ignore such syntax, and it is useful for compiling such scripts without modifying them.
 
 `-print-package-declarations` will invoke a new frontend mode, which is used to dump `@package` info to `stdout` (in JSON).  This is the proposed interface for parsing such syntax, but the implementation is still stuck and incomplete.  [package-syntax-parser](../package-syntax-parser) is an alternative implementation of it written with Swift and [SwiftSyntax](https://github.com/apple/swift-syntax).  Currently, `-print-package-declarations` is only used by the driver to check if a file contains `@package` declarations.
 
