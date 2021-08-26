@@ -10,9 +10,9 @@ In the pitch, I added basic scripting support by generating and caching a comple
 
 Then, I implemented a prototype of the new `swift-script` tool, with a subset of the proposed functions.  The `build` (`run`) subcommand builds (and runs) the generated cache directly.  `clean`, `update` and `resolve` is applied at the cache path, like what the `swift-package` tool does.
 
-`reset` stands for "cache reset".  Thus, `swift-script reset` will remove the entire generated cache, while `swift-package reset` removes only the build directory.
+`reset` stands for "cache reset".  Thus, `swift script reset` will remove the entire generated cache, while `swift package reset` removes only the build directory.
 
-The `list` subcommand is completely new.  Running `swift-script list` will scan the script cache directory and list all the cache names and original script paths.
+The `list` subcommand is completely new.  Running `swift script list` will scan the script cache directory and list all the cache names and original script paths.
 
 ## Tests (Partially Done)
 

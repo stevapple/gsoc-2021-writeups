@@ -4,7 +4,7 @@ This repository contains write-ups for my GSoC 2021 project [_SwiftPM support fo
 
 ## Environment
 
-I'm using macOS 11.5.2 with Xcode 13 beta 5 by the end of the coding period.  That is, you're likely to build and use the toolchain smoothly if you're at the same version.  It is also assumed to be compatible with macOS 11.5.1, macOS 12 beta and with Xcode 13 beta 4, but there's no guarantee.
+I'm using macOS 11.5.2 with Xcode 13 beta 5 on an Intel Mac by the end of the coding period.  That is, you're likely to build and use the toolchain smoothly if you're at the same version.  It is also assumed to be compatible with macOS 11.5.1, macOS 12 beta and with Xcode 13 beta 4, but there's no guarantee.
 
 Trying to build the toolchain on Windows is known to be problematic, because these tools are not optimized for Windows use case.  Building on Linux has not been tested yet, but any single piece of the changes are supposed not to break Linux builds.
 
@@ -12,14 +12,14 @@ Remember that these Xcode versions are not documented in `swift/utils/build-scri
 
 ## Overview
 
-The work is splited into 4 separate repositories.  For existing repositories like `swift`, `swift-driver` and `swift-package-manager`, changes stay in `gsoc-2021` branch of my own fork.  Codes for the new `package-syntax-parser` is placed in [stevapple/package-syntax-parser](https://github.com/stevapple/package-syntax-parser).
+The work is splited into 4 separate repositories.  For existing repositories like `swift`, `swift-driver` and `swift-package-manager`, changes stay in `gsoc-2021` branch of my own fork.  Codes for `package-syntax-parser` is placed in a new repository.
 
 | Name | Repository | Branch | Pull Request | Write-up |
 |---|---|---|---|---|
-| `swift` | [stevapple/swift](https://github.com/stevapple/swift) | [`gsoc-2021`](https://github.com/stevapple/swift/tree/gsoc-2021) | [stevapple/swift#1](https://github.com/stevapple/swift/pull/1) | [Link](/swift) |
-| `swift-driver` | [stevapple/swift-driver](https://github.com/stevapple/swift-driver) | [`gsoc-2021`](https://github.com/stevapple/swift-driver/tree/gsoc-2021) | [stevapple/swift-driver#1](https://github.com/stevapple/swift-driver/pull/1) | [Link](/swift-driver) |
-| `swiftpm` | [stevapple/swift-package-manager](https://github.com/stevapple/swift-package-manager) | [`gsoc-2021`](https://github.com/stevapple/swift-package-manager/tree/gsoc-2021) | [stevapple/swift-package-manager#1](https://github.com/stevapple/swift-package-manager/pull/1) | [Link](/swift-package-manager) |
-| `package-syntax-parser` | [stevapple/package-syntax-parser](https://github.com/stevapple/package-syntax-parser) | [`main`](https://github.com/stevapple/package-syntax-parser/tree/main) | - | [Link](/package-syntax-parser) |
+| `swift` | [stevapple/swift](https://github.com/stevapple/swift/tree/gsoc-2021) | [`gsoc-2021`](https://github.com/stevapple/swift/tree/gsoc-2021) | [stevapple/swift#1](https://github.com/stevapple/swift/pull/1) | [Link](/swift/README.md) |
+| `swift-driver` | [stevapple/swift-driver](https://github.com/stevapple/swift-driver/tree/gsoc-2021) | [`gsoc-2021`](https://github.com/stevapple/swift-driver/tree/gsoc-2021) | [stevapple/swift-driver#1](https://github.com/stevapple/swift-driver/pull/1) | [Link](/swift-driver/README.md) |
+| `swiftpm` | [stevapple/swift-package-manager](https://github.com/stevapple/swift-package-manager/tree/gsoc-2021) | [`gsoc-2021`](https://github.com/stevapple/swift-package-manager/tree/gsoc-2021) | [stevapple/swift-package-manager#1](https://github.com/stevapple/swift-package-manager/pull/1) | [Link](/swift-package-manager/README.md) |
+| `package-syntax-parser` | [stevapple/package-syntax-parser](https://github.com/stevapple/package-syntax-parser) | [`main`](https://github.com/stevapple/package-syntax-parser/tree/main) | - | [Link](/package-syntax-parser/README.md) |
 
 ## Checkout
 
@@ -44,7 +44,7 @@ utils/build-script --skip-build-benchmarks \
   --install-all --llbuild --swiftpm --swift-driver --swiftsyntax --package-parser
 ```
 
-Run the command above from `swift`, and you'll get the toolchain at `build/Ninja-RelWithDebInfoAssert/toolchain-macosx-x86_64/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr`.  This toolchain is incomplete for using with an IDE, but you can add its `bin` directory to `PATH` and try it in command line.
+Run the command above from `swift`, and you'll get the toolchain at `build/Ninja-RelWithDebInfoAssert/toolchain-macosx-x86_64/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr`.  This toolchain is incomplete for using with an IDE, but you can add its `bin` directory to `$PATH` and try it in command line.
 
 Using the toolchain in Xcode has not been tested.  If you'd like to have a try, run:
 
@@ -65,7 +65,7 @@ import Logging
 
 will import the target named `Logging` from `.package(url: "https://github.com/apple/swift-log.git", from: "1.0.0")`.  SwiftPM will assume the package name to be `swift-log`, inferred from the last path component.
 
-You can use `swift script run script.swift [arguments]` run a script with such syntax.  Specify `--quiet` or `--verbose` to see less or more output from the build system.  For the usage of other tools, see [swift-package-manager](/swift-package-manager) or run `swift script`.
+You can use `swift script run script.swift [arguments]` run a script with such syntax.  Specify `--quiet` or `--verbose` to see less or more output from the build system.  For the usage of other subcommands, see [swift-package-manager](/swift-package-manager/README.md) or run `swift script <subcommand> --help`.
 
 You may also use the `swift` shortcut provided by `swift-driver`.  Driver calls like:
 

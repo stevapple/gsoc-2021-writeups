@@ -8,7 +8,7 @@ Like `swift-frontend`, `package-syntax-parser` is only intended for internal use
 
 ## Implementation (Complete)
 
-In the `PackageSyntaxParser` library, I defined the model to describe the `@package` declarations parsed in a script file.  This is the unstable intermediate data model (in JSON) between the parser and [SwiftPM](/swift-package-manager).  The `package-syntax-parser` tool accepts exactly one absolute path, and outputs the parsed `ScriptDependencies` model encoded in JSON.
+In the `PackageSyntaxParser` library, I defined the model to describe the `@package` declarations parsed in a script file.  This is the unstable intermediate data model (in JSON) between the parser and [SwiftPM](/swift-package-manager/README.md).  The `package-syntax-parser` tool accepts exactly one absolute path, and outputs the parsed `ScriptDependencies` model encoded in JSON.
 
 Install functionality is added to [`build-script-helper.py`](https://github.com/stevapple/package-syntax-parser/blob/main/build-script-helper.py), which was based on the [one](https://github.com/apple/swift-format/blob/main/build-script-helper.py) from [swift-format](https://github.com/apple/swift-format).  Since `package-syntax-parser` relies on both `libSwiftSyntax` and `libSyntax`, it's necessary to add both library paths to its `@rpath` on installation.
 
