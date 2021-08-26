@@ -6,13 +6,13 @@ This repository contains write-ups for my GSoC 2021 project [_SwiftPM support fo
 
 I'm using macOS 11.5.2 with Xcode 13 beta 5 on an Intel Mac by the end of the coding period.  That is, you're likely to build and use the toolchain smoothly if you're at the same version.  It is also assumed to be compatible with macOS 11.5.1, macOS 12 beta and with Xcode 13 beta 4, but there's no guarantee.
 
-Trying to build the toolchain on Windows is known to be problematic, because these tools are not optimized for Windows use case.  Building on Linux has not been tested yet, but any single piece of the changes are supposed not to break Linux builds.
+Trying to build the toolchain on Windows is known to be problematic because these tools are not optimized for Windows use case.  Building on Linux has not been tested yet, but any single piece of the changes are supposed not to break Linux builds.
 
 Remember that these Xcode versions are not documented in `swift/utils/build-script`, so you need to set `SKIP_XCODE_VERSION_CHECK=1` before starting to build the toolchain yourself.
 
 ## Overview
 
-The work is splited into 4 separate repositories.  For existing repositories like `swift`, `swift-driver` and `swift-package-manager`, changes stay in `gsoc-2021` branch of my own fork.  Codes for `package-syntax-parser` is placed in a new repository.
+The work is split into 4 separate repositories.  For existing repositories like `swift`, `swift-driver` and `swift-package-manager`, changes stay in `gsoc-2021` branch of my own fork.  Codes for `package-syntax-parser` is placed in a new repository.
 
 | Name | Repository | Branch | Pull Request | Write-up |
 |---|---|---|---|---|
