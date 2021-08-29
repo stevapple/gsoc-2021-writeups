@@ -80,3 +80,11 @@ swift-script run --quiet script.swift
 ```
 
 if `script.swift` uses `@package` syntax.
+
+## Evolution
+
+This project is intended to be the prototype of a new Swift feature, which will eventually go through the [Swift Evolution](https://github.com/apple/swift-evolution) process.  The Swift Forums thread of the Evolution proposal is [here](https://forums.swift.org/t/pitch-swiftpm-support-for-swift-scripts-revision/46717).
+
+I will continue to push the work forward after GSoC, until it completes the Evolution process.  I regard it as a really exciting and promising feature, and I hope you'll like it.
+
+Feel free to leave your comment!
