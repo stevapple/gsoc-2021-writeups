@@ -6,13 +6,13 @@ This repository contains write-ups for my GSoC 2021 project [_SwiftPM support fo
 
 I'm using macOS 11.5.2 with Xcode 13 beta 5 on an Intel Mac by the end of the coding period.  That is, you're likely to build and use the toolchain smoothly if you're at the same version.  It is also assumed to be compatible with macOS 11.5.1, macOS 12 beta and with Xcode 13 beta 4, but there's no guarantee.
 
-Trying to build the toolchain on Windows is known to be problematic because these tools are not optimized for Windows use case.  Building on Linux has not been tested yet, but any single piece of the changes are supposed not to break Linux builds.
+Trying to use the toolchain on Windows is known to be problematic because these tools are not optimized for Windows use case.  Linux support has not been tested yet, but all the changes are platform-neutral and thus not supposed to break Linux builds.
 
-Remember that these Xcode versions are not documented in `swift/utils/build-script`, so you need to set `SKIP_XCODE_VERSION_CHECK=1` before starting to build the toolchain yourself.
+Remember that the supported Xcode versions are not documented in `swift/utils/build-script`, so you'll need to set `SKIP_XCODE_VERSION_CHECK=1` before starting to build the toolchain on macOS.
 
 ## Overview
 
-The work is split into 4 separate repositories.  For existing repositories like `swift`, `swift-driver` and `swift-package-manager`, changes stay in `gsoc-2021` branch of my own fork.  Codes for `package-syntax-parser` is placed in a new repository.
+The work is split into 4 separate repositories.  For existing repositories like `swift`, `swift-driver` and `swift-package-manager`, changes stay in `gsoc-2021` branch of my own fork.  Code for `package-syntax-parser` is placed in a new repository.
 
 | Name | Repository | Branch | Pull Request | Write-up |
 |---|---|---|---|---|
@@ -31,11 +31,11 @@ cd swift
 utils/update-checkout --clone
 ```
 
-The commands above will clone all the repositories that is required to build the toolchain to your computer.
+The commands above will clone all the repositories that are required to build the toolchain to your computer.
 
 ## Build
 
-You can build the toolchain following the [Getting Started](https://github.com/stevapple/swift/docs/HowToGuides/GettingStarted.md) guide from swift.  I recommended using Ninja instead of Xcode.  A minimal build of the GSoC 2021 project uses the following config:
+You can build the toolchain following the [Getting Started](https://github.com/stevapple/swift/docs/HowToGuides/GettingStarted.md) guide from swift.  I recommend using Ninja instead of Xcode.  A minimal build of the GSoC 2021 project uses the following config:
 
 ```sh
 utils/build-script --skip-build-benchmarks \
@@ -52,7 +52,7 @@ Using the toolchain in Xcode has not been tested.  If you'd like to have a try, 
 utils/build-toolchain $BUNDLE_PREFIX
 ```
 
-where `$BUNDLE_PREFIX` is a string that will be prepended to the build date to give the bundle identifier of the toolchain's `Info.plist`. For instance, if `$BUNDLE_PREFIX` was `com.example`, the toolchain produced will have the bundle identifier `com.example.YYYYMMDD`. It will be created in the directory you run the script with a filename of the form: `swift-LOCAL-YYYY-MM-DD-a-osx.tar.gz`.
+where `$BUNDLE_PREFIX` is a string that will be prepended to the build date to give the bundle identifier of the toolchain's `Info.plist`. For instance, if `$BUNDLE_PREFIX` was `com.example`, the toolchain produced will have the bundle identifier `com.example.YYYYMMDD`. It will be created with a filename of the form: `swift-LOCAL-YYYY-MM-DD-a-osx.tar.gz`.
 
 ## Usage
 
@@ -65,7 +65,7 @@ import Logging
 
 will import the target named `Logging` from `.package(url: "https://github.com/apple/swift-log.git", from: "1.0.0")`.  SwiftPM will assume the package name to be `swift-log`, inferred from the last path component.
 
-You can use `swift script run script.swift [arguments]` run a script with such syntax.  Specify `--quiet` or `--verbose` to see less or more output from the build system.  For the usage of other subcommands, see [swift-package-manager](/swift-package-manager/README.md) or run `swift script <subcommand> --help`.
+You can use `swift script run script.swift [arguments]` to run a script with such syntax.  Specify `--quiet` or `--verbose` to see less or more output from the build system.  For the usage of other subcommands, see [swift-package-manager](/swift-package-manager/README.md) or run `swift script <subcommand> --help`.
 
 You may also use the `swift` shortcut provided by `swift-driver`.  Driver calls like:
 
