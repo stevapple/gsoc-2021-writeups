@@ -17,3 +17,7 @@ The `list` subcommand is completely new.  Running `swift script list` will scan 
 ## Tests (Partially Done)
 
 For the `swift-script` tool, there are only functional tests for its `run` and `build` subcommands.  Outputs from `package-syntax-parser` will be mocked, so the tests won't fail during a fresh build.
+
+## Next Steps
+
+

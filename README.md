@@ -85,6 +85,6 @@ if `script.swift` uses `@package` syntax.
 
 This project is intended to be the prototype of a new Swift feature, which will eventually go through the [Swift Evolution](https://github.com/apple/swift-evolution) process.  The Swift Forums thread of the Evolution proposal is [here](https://forums.swift.org/t/pitch-swiftpm-support-for-swift-scripts-revision/46717).
 
-I will continue to push the work forward after GSoC, until it completes the Evolution process.  I regard it as a really exciting and promising feature, and I hope you'll like it.
+I will continue to push the work forward after GSoC, until it completes the Evolution process.  For more details, see the **_Next Steps_** part of each write-up.
 
-Feel free to leave your comment!
+I regard it as a really exciting and promising feature, and I hope you'll like it.  Please feel free to leave your comment!

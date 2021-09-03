@@ -15,3 +15,9 @@ In the pitch, I added two new jobs to the driver: `check-script` and `run-script
 ## Tests (Left)
 
 Because the scripting check happens internally, I found it challenging to unit test this change.  The GSoC outcome only consists of functional changes to the code, and tests are left over for future implementation.
+
+## Next Steps
+
+In the case of using `swift` with lots of flags and options, it could be a big challenge to imitate the frontend's behavior with SwiftPM.  I need more investigation to decide how to align the interface of these two tools, which may include disabling some flags under scripting mode and writing specific tests for such cases.
+
+Post-GSoC goals also include writing tests for the existing code.  This work can be done as soon as I find the way to rearrange the whole process which makes it testable.

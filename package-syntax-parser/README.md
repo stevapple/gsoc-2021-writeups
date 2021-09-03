@@ -15,3 +15,7 @@ Install functionality is added to [`build-script-helper.py`](https://github.com/
 ## Tests (Complete)
 
 Both unit tests and functional tests are complete, and most key functions are guaranteed by assertions.
+
+## Next Steps
+
+Package Syntax Parser is fully functional at this point and is going to be deprecated once the integrated parser from `swift-frontend` is available. See [swift](/swift/README.md#next-steps) for more detail.
